@@ -14,7 +14,7 @@ python cli.py --help
 # 输入被审查项目（code review project path）
 python cli.py /path/to/java/project
 
-# 默认输出到当前./reviews
+# 默认输出到当前路径下的 ./reviews 目录
 
 # 指定输出目录和配置文件
 python cli.py /path/to/java/project --output-dir ./my-reviews
