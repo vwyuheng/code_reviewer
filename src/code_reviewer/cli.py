@@ -4,12 +4,12 @@ import asyncio
 from pathlib import Path
 from rich.console import Console
 from rich.progress import Progress, TextColumn, BarColumn, TaskID
-from .config.settings import Settings, load_config, save_config
-from .core.file_handler import FileHandler
-from .core.reviewer import CodeReviewer
-from .core.analyzer import CodeAnalyzer
-from .utils.logger import get_logger
-from .utils.helpers import ensure_directory
+from code_reviewer.config.settings import Settings, load_config, save_config
+from code_reviewer.core.file_handler import FileHandler
+from code_reviewer.core.reviewer import CodeReviewer
+from code_reviewer.core.analyzer import CodeAnalyzer
+from code_reviewer.utils.logger import get_logger
+from code_reviewer.utils.helpers import ensure_directory
 
 app = typer.Typer()
 console = Console()

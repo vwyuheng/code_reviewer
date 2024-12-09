@@ -2,10 +2,19 @@
 from pathlib import Path
 from typing import Dict, Any
 import yaml
-from pydantic import BaseSettings, Field
+from pydantic_settings import BaseSettings
+from pydantic import Field
 
 
 class Settings(BaseSettings):
+    model_config = {
+        'protected_namespaces': ('settings_',),
+        'env_prefix': '',  # if you want to use environment variables without prefix
+        'env_file': '.env', # if you're using a .env file
+        'env_file_encoding': 'utf-8',
+        'extra': 'allow',  # if you want to allow extra fields
+    }
+
     api_key: str = Field("", env="POE_API_KEY")
     max_tokens_per_group: int = Field(12000, env="MAX_TOKENS_PER_GROUP")
     max_retries: int = Field(3, env="MAX_RETRIES")
@@ -15,10 +24,6 @@ class Settings(BaseSettings):
     target_extensions: list = Field(
         default=[".java", ".yml", ".yaml", ".properties", ".xml"]
     )
-
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
 
 
 def load_config(config_path: Path) -> Dict[str, Any]:

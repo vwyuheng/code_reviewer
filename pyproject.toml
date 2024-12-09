@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "code_reviewer"
+version = "0.1.0"
+authors = [
+    { name = "henry", email = "henry.yuh@gmail.com" },
+]
+description = "A tool for automated code review"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "typer",
+    "rich",
+    "fastapi-poe",
+    "tenacity",
+    "pyyaml"
+]
+
+[project.scripts]
+code-reviewer = "code_reviewer.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/code_reviewer"]
